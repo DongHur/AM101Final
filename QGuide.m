@@ -13,7 +13,7 @@
 clc
 clear
 
-data=csvread('QGuideData.csv', 1, 1);
+data=csvread('QGuideData2.csv', 1, 1);
 
 y1 = data(:,1);               % next year student enrollment
 y2 = data(:,2);               % current year student enrollment
