@@ -41,20 +41,20 @@ ax(3,1).YLabel.String='Recommendation';
 ax(4,1).YLabel.String='Instructor Overall'; 
 ax(5,1).YLabel.String='Instructor Accessibility'; 
 
-% 
-% ax(6,1).XLabel.String='Change in Enrollment'; 
-% ax(6,2).XLabel.String='Overall Rating'; 
-% ax(6,3).XLabel.String='Workload Hours'; 
-% ax(6,4).XLabel.String='Recommendation'; 
-% ax(6,5).XLabel.String='Instructor Overall'; 
-% ax(6,6).XLabel.String='Instructor Accessibility'; 
+
+ax(6,1).XLabel.String='Change in Enrollment'; 
+ax(6,3).XLabel.String='Workload Hours'; 
+ax(6,4).XLabel.String='Recommendation'; 
+ax(6,5).XLabel.String='Instructor Overall'; 
+ax(6,6).XLabel.String='Instructor Accessibility'; 
 
 
-ax(5,1).XLabel.String='Change in Enrollment'; 
-ax(5,2).XLabel.String='Workload Hours'; 
-ax(5,3).XLabel.String='Recommendation'; 
-ax(5,4).XLabel.String='Instructor Overall'; 
-ax(5,5).XLabel.String='Instructor Accessibility'; 
+ax(6,1).XLabel.String='Change in Enrollment'; 
+ax(6,2).XLabel.String='Overall Rating'; 
+ax(6,3).XLabel.String='Workload Hours'; 
+ax(6,4).XLabel.String='Recommendation'; 
+ax(6,5).XLabel.String='Instructor Overall'; 
+ax(6,6).XLabel.String='Instructor Accessibility'; 
 
 % fits linear regression
 fitlm(X, deltaY)
