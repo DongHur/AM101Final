@@ -37,12 +37,20 @@ percentInc = (y1-y2)./y2;       % Percent Increase
 ele_req = elective+requirement; % Elective + Requirement percentages
 
 % Combines all the variables
-X=[ overall_rating workload_hours recommend inst_overall inst_access elective requirement assignments feedback section ];
-plot_name = {
-    'Enrollment % Inc.'; 'overall_rating';  'workload_hours'; 'recommend'; 'inst_overall';
-    'inst_access';'elective'; 'requirement'; 'assignments'; 'feedback'; 
+% X=[ overall_rating workload_hours recommend inst_overall inst_access elective requirement feedback section ];
+% plot_name = {
+%     'Enrollment % Inc.';'overall_rating';  'workload_hours'; 'recommend'; 'inst_overall';
+%     'inst_access';'elective'; 'requirement'; 'feedback'; 
+%     'section'
+%     };
+
+
+X=[ recommend inst_access elective requirement section ];
+plot_name = {'overall_rating'; 'recommend';
+    'inst_access';'elective'; 'requirement'; 
     'section'
     };
+
 
 % X=[  recommend ];
 % plot_name = {
@@ -50,8 +58,8 @@ plot_name = {
 %     };
 
 % Creates plot
-[~, ax] = plotmatrix([percentInc X]);
-[R, PValue] = corrplot([percentInc X]);
+[~, ax] = plotmatrix([overall_rating X]);
+[R, PValue] = corrplot([overall_rating X]);
 % Places labels on plot
 for i = 1:length(plot_name)
     ax(i,1).YLabel.String = plot_name{i};
@@ -59,7 +67,7 @@ for i = 1:length(plot_name)
 end
 
 % fits linear regression
-fitlm(X, percentInc)
+fitlm(X, overall_rating)
 %%
-stepwisefit(X, percentInc)
+stepwisefit(X, overall_rating)
 
