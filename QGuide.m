@@ -1,5 +1,3 @@
-%% Anonymous Function used in this file
-varname = @(x) inputname(1)     % returns the variable name in string
 %%
 % All of the q guide data can be found here: http://q.fas.harvard.edu/
 % We will look across all departments for course evaluation data.
@@ -39,17 +37,17 @@ percentInc = (y1-y2)./y2;       % Percent Increase
 ele_req = elective+requirement; % Elective + Requirement percentages
 
 % Combines all the variables
-% X=[ overall_rating workload_hours recommend inst_overall inst_access elective requirement assignments feedback section ];
-% plot_name = {
-%     'overall_rating'; 'Enrollment % Inc.'; 'workload_hours'; 'recommend'; 'inst_overall';
-%     'inst_access';'elective'; 'requirement'; 'assignments'; 'feedback'; 
-%     'section'
-%     };
-
-X=[  recommend ];
+X=[ overall_rating workload_hours recommend inst_overall inst_access elective requirement assignments feedback section ];
 plot_name = {
-    'percent increase'; 'recommend'
+    'Enrollment % Inc.'; 'overall_rating';  'workload_hours'; 'recommend'; 'inst_overall';
+    'inst_access';'elective'; 'requirement'; 'assignments'; 'feedback'; 
+    'section'
     };
+
+% X=[  recommend ];
+% plot_name = {
+%     'percent increase'; 'recommend'
+%     };
 
 % Creates plot
 [~, ax] = plotmatrix([percentInc X]);
