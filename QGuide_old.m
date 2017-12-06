@@ -17,8 +17,8 @@ clc
 clear all
 close all
 
-% data=csvread('QGuideDataCombined.csv', 1, 1);
-data=csvread('data/QGuideDataBigClass4.csv', 1, 1);
+% data=csvread('QGuideData3.csv', 1, 1);
+data=csvread('data/QGuideDataFinal.csv', 1, 1);
 y1 = data(:,1);               % next year student enrollment
 y2 = data(:,2);               % current year student enrollment
 overall_rating = data(:,3);   % Overall Rating
@@ -37,10 +37,11 @@ percentInc = (y1-y2)./y2;       % Percent Increase
 ele_req = elective+requirement; % Elective + Requirement percentages
 
 % Combines all the variables
-X=[ recommend elective requirement ];
+X=[ overall_rating workload_hours recommend inst_overall inst_access elective requirement assignments feedback section ];
 plot_name = {
-    'Enrollment % Inc.'; 'recommend';
-    'elective'; 'requirement'
+    'Enrollment % Inc.'; 'overall_rating';  'workload_hours'; 'recommend'; 'inst_overall';
+    'inst_access';'elective'; 'requirement'; 'assignments'; 'feedback'; 
+    'section'
     };
 
 % X=[  recommend ];
@@ -49,8 +50,8 @@ plot_name = {
 %     };
 
 % Creates plot
-[~, ax] = plotmatrix([deltaY X]);
-%[R, PValue] = corrplot([percentInc X]);
+[~, ax] = plotmatrix([percentInc X]);
+[R, PValue] = corrplot([percentInc X]);
 % Places labels on plot
 for i = 1:length(plot_name)
     ax(i,1).YLabel.String = plot_name{i};
@@ -58,6 +59,7 @@ for i = 1:length(plot_name)
 end
 
 % fits linear regression
-fitlm(X, deltaY)
+fitlm(X, percentInc)
 %%
-stepwisefit(X, deltaY)
+stepwisefit(X, percentInc)
+
